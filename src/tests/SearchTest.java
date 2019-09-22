@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -58,18 +59,56 @@ public class SearchTest {
 
         Assert.assertTrue(resultsPage.isOpen() == true);
         Assert.assertTrue(resultsPage.resultCount() > 0);
+        //Assert.assertTrue(resultsPage.startNumber() == 1);
+        Assert.assertTrue(resultsPage.endNumber() == 10);
+
+        System.out.println("resultCountText= " + resultsPage.resultCount());
+        System.out.println("First Num = " + resultsPage.startNumber());
+        System.out.println("End result = " + resultsPage.endNumber());
 
         String resultsTitle = resultsPage.resultTitle();
+
+        // Get text of Second Subtitle
+        String resultsSubTitle = resultsPage.resultSubTitle();
+
+        // Get text of Author
+        String resultsAuthor = resultsPage.resultsAuthor();
+
+       // Go to the next Results Page
         resultsPage.selectSecondResult();
+
+
+
 
         DetailsPage detailsPage = new DetailsPage(driver);
         Assert.assertTrue(detailsPage.isOpen() == true);
 
         String detailsTitle = detailsPage.resultTitle();
-
         Assert.assertEquals(resultsTitle, detailsTitle);
 
-        }
+
+        // Assert SubTitle
+        String detailsSubTitle = detailsPage.resultSubTitle();
+        Assert.assertEquals(resultsSubTitle, detailsSubTitle);
+
+        // Assert Author
+        String detailsAuthor = detailsPage.resultAuthor();
+        Assert.assertEquals(resultsAuthor, detailsAuthor);
+
+
+        // Go to the next HomePage
+        homePage.open();
+        wait.until(ExpectedConditions.titleIs(homePageTitle));
+        Assert.assertEquals(homePageTitle, homePage.title());
+
+        homePage.searchFor("java");
+        Assert.assertTrue(resultsPage.isOpen() == true);
+
+        //Open Next Button
+        resultsPage.selectNextBtn();
+        System.out.println("Next page start number = " + resultsPage.nextPageStartNum());
+
+    }
 
     }
 
