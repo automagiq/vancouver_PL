@@ -51,20 +51,20 @@ public class ResultsPage {
     public String startNumber() {
         WebElement label = driver.findElement(RESULT_COUNT_LOCATOR);
         String resultCountText = label.getText();
-        int startIndex = resultCountText.indexOf("11 ");
+        int startIndex = resultCountText.indexOf("1 ");
         int endIndex = resultCountText.indexOf(" to");
         String firstNum = resultCountText.substring(startIndex, endIndex);
-        // convert to Integer
+        // need to convert to Integer
         return firstNum;
     }
 
-    public String nextPageStartNum() {
+    public String SecondPageStartNum() {
         WebElement label = driver.findElement(RESULT_COUNT_LOCATOR);
         String startNum = label.getText();
         int startIndex = startNum.indexOf("11 ");
         int endIndex = startNum.indexOf(" ");
         String firstNum = startNum;
-        // convert to Integer
+        // need to convert to Integer
         return firstNum;
     }
 

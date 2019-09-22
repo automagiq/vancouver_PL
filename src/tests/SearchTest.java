@@ -61,10 +61,11 @@ public class SearchTest {
         Assert.assertTrue(resultsPage.resultCount() > 0);
         //Assert.assertTrue(resultsPage.startNumber() == 1);
         Assert.assertTrue(resultsPage.endNumber() == 10);
+        //Assert.assertTrue(resultsPage.endNumber() == 11);
 
-        System.out.println("resultCountText= " + resultsPage.resultCount());
-        System.out.println("First Num = " + resultsPage.startNumber());
-        System.out.println("End result = " + resultsPage.endNumber());
+        System.out.println("resultCount = " + resultsPage.resultCount());
+        System.out.println("First Num of 1st Page = " + resultsPage.startNumber());
+        System.out.println("End Num of 1st Page = " + resultsPage.endNumber());
 
         String resultsTitle = resultsPage.resultTitle();
 
@@ -106,7 +107,7 @@ public class SearchTest {
 
         //Open Next Button
         resultsPage.selectNextBtn();
-        System.out.println("Next page start number = " + resultsPage.nextPageStartNum());
+        System.out.println("Second page start number = " + resultsPage.SecondPageStartNum());
 
     }
 
