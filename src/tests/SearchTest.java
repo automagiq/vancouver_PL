@@ -61,7 +61,7 @@ public class SearchTest {
         Assert.assertTrue(resultsPage.resultCount() > 0);
         //Assert.assertTrue(resultsPage.startNumber() == 1);
         Assert.assertTrue(resultsPage.endNumber() == 10);
-        //Assert.assertTrue(resultsPage.endNumber() == 11);
+        //Assert.assertTrue(resultsPage.SecondPageStartNum() == 11);
 
         System.out.println("resultCount = " + resultsPage.resultCount());
         System.out.println("First Num of 1st Page = " + resultsPage.startNumber());
